@@ -65,7 +65,9 @@ composer test
 ## Scripts
 ### Generate SDK
 https://raw.githubusercontent.com/wppconnect-team/wppconnect-server/main/src/swagger.json
-sdkgenerator generate:sdk swagger.json --type=openapi --name=Wppconnect --output="Api" --namespace="Eele94\\Wppconnect\\Api"
+sdkgenerator generate:sdk swagger.json --type=openapi --name=Wppconnect --output=src\\Api --namespace=Eele94\\Wppconnect\\Api
+
+sdkgenerator generate:sdk "WPPConnect API REST.postman_collection.json" --type=postman --name=Wppconnect --output=src\\Api --namespace=Eele94\\Wppconnect\\Api
 
 ## Changelog
 
