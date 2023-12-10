@@ -9,20 +9,13 @@ use Saloon\Contracts\Response;
 
 class PhoneStatus extends Resource
 {
-	/**
-	 * @param string $session
-	 */
-	public function batteryStatus(string $session): Response
-	{
-		return $this->connector->send(new BatteryStatus($session));
-	}
+    public function batteryStatus(string $session): Response
+    {
+        return $this->connector->send(new BatteryStatus($session));
+    }
 
-
-	/**
-	 * @param string $session
-	 */
-	public function hostDevice(string $session): Response
-	{
-		return $this->connector->send(new HostDevice($session));
-	}
+    public function hostDevice(string $session): Response
+    {
+        return $this->connector->send(new HostDevice($session));
+    }
 }

@@ -2,7 +2,6 @@
 
 namespace Eele94\Wppconnect\Api\Requests\Chat;
 
-use DateTime;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -13,34 +12,25 @@ use Saloon\Traits\Body\HasJsonBody;
  */
 class SendMute extends Request implements HasBody
 {
-	use HasJsonBody;
+    use HasJsonBody;
 
-	protected Method $method = Method::POST;
+    protected Method $method = Method::POST;
 
+    public function resolveEndpoint(): string
+    {
+        return '/';
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/";
-	}
+    public function __construct(
+        protected string $session,
+        protected mixed $phone = null,
+        protected mixed $time = null,
+        protected mixed $type = null,
+    ) {
+    }
 
-
-	/**
-	 * @param string $session
-	 * @param null|mixed $phone
-	 * @param null|mixed $time
-	 * @param null|mixed $type
-	 */
-	public function __construct(
-		protected string $session,
-		protected mixed $phone = null,
-		protected mixed $time = null,
-		protected mixed $type = null,
-	) {
-	}
-
-
-	public function defaultBody(): array
-	{
-		return array_filter(['phone' => $this->phone, 'time' => $this->time, 'type' => $this->type]);
-	}
+    public function defaultBody(): array
+    {
+        return array_filter(['phone' => $this->phone, 'time' => $this->time, 'type' => $this->type]);
+    }
 }

@@ -2,7 +2,6 @@
 
 namespace Eele94\Wppconnect\Api\Requests\SendMessage;
 
-use DateTime;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -13,34 +12,25 @@ use Saloon\Traits\Body\HasJsonBody;
  */
 class SendFileBase64 extends Request implements HasBody
 {
-	use HasJsonBody;
+    use HasJsonBody;
 
-	protected Method $method = Method::POST;
+    protected Method $method = Method::POST;
 
+    public function resolveEndpoint(): string
+    {
+        return '/';
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/";
-	}
+    public function __construct(
+        protected string $session,
+        protected mixed $phone = null,
+        protected mixed $base64 = null,
+        protected mixed $isGroup = null,
+    ) {
+    }
 
-
-	/**
-	 * @param string $session
-	 * @param null|mixed $phone
-	 * @param null|mixed $base64
-	 * @param null|mixed $isGroup
-	 */
-	public function __construct(
-		protected string $session,
-		protected mixed $phone = null,
-		protected mixed $base64 = null,
-		protected mixed $isGroup = null,
-	) {
-	}
-
-
-	public function defaultBody(): array
-	{
-		return array_filter(['phone' => $this->phone, 'base64' => $this->base64, 'isGroup' => $this->isGroup]);
-	}
+    public function defaultBody(): array
+    {
+        return array_filter(['phone' => $this->phone, 'base64' => $this->base64, 'isGroup' => $this->isGroup]);
+    }
 }

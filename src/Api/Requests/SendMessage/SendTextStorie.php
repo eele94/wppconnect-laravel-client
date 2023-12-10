@@ -2,7 +2,6 @@
 
 namespace Eele94\Wppconnect\Api\Requests\SendMessage;
 
-use DateTime;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -13,30 +12,23 @@ use Saloon\Traits\Body\HasJsonBody;
  */
 class SendTextStorie extends Request implements HasBody
 {
-	use HasJsonBody;
+    use HasJsonBody;
 
-	protected Method $method = Method::POST;
+    protected Method $method = Method::POST;
 
+    public function resolveEndpoint(): string
+    {
+        return '/';
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/";
-	}
+    public function __construct(
+        protected string $session,
+        protected mixed $text = null,
+    ) {
+    }
 
-
-	/**
-	 * @param string $session
-	 * @param null|mixed $text
-	 */
-	public function __construct(
-		protected string $session,
-		protected mixed $text = null,
-	) {
-	}
-
-
-	public function defaultBody(): array
-	{
-		return array_filter(['text' => $this->text]);
-	}
+    public function defaultBody(): array
+    {
+        return array_filter(['text' => $this->text]);
+    }
 }
