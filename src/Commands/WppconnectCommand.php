@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Eele94\Wppconnect\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class WppconnectCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'wppconnect-laravel-client';
 
     public $description = 'My command';
 
