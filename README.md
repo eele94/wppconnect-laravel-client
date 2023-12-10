@@ -62,6 +62,11 @@ echo $wppconnect->echoPhrase('Hello, Eele94!');
 composer test
 ```
 
+## Scripts
+### Generate SDK
+https://raw.githubusercontent.com/wppconnect-team/wppconnect-server/main/src/swagger.json
+sdkgenerator generate:sdk swagger.json --type=openapi --name=Wppconnect --output="Api" --namespace="Eele94\\Wppconnect\\Api"
+
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
