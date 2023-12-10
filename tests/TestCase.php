@@ -2,9 +2,9 @@
 
 namespace Eele94\Wppconnect\Tests;
 
+use Eele94\Wppconnect\WppconnectServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Eele94\Wppconnect\WppconnectServiceProvider;
 
 class TestCase extends Orchestra
 {

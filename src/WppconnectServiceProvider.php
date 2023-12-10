@@ -2,9 +2,9 @@
 
 namespace Eele94\Wppconnect;
 
+use Eele94\Wppconnect\Commands\WppconnectCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Eele94\Wppconnect\Commands\WppconnectCommand;
 
 class WppconnectServiceProvider extends PackageServiceProvider
 {
