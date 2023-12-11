@@ -10,7 +10,7 @@ use Saloon\Traits\Body\HasJsonBody;
 /**
  * start-session (Retorna QRCode de login)
  */
-class StartSessionRetornaQrcodeDeLogin extends Request implements HasBody
+class StartSession extends Request implements HasBody
 {
     use HasJsonBody;
 

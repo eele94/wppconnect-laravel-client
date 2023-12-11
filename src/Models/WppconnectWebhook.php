@@ -11,4 +11,9 @@ class WppconnectWebhook extends Model
     protected $casts = [
         'data' => 'json',
     ];
+
+    public function wppSession()
+    {
+        return $this->belongsTo(WppconnectSession::class, 'session', 'session');
+    }
 }

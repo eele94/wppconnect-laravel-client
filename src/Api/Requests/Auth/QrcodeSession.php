@@ -8,13 +8,13 @@ use Saloon\Http\Request;
 /**
  * qrcode-session (Pegar qrCode de autenticação via stream)
  */
-class QrcodeSessionPegarQrCodeDeAutenticacaoViaStream extends Request
+class QrcodeSession extends Request
 {
     protected Method $method = Method::GET;
 
     public function resolveEndpoint(): string
     {
-        return '/';
+        return "/{$this->session}/qrcode-session";
     }
 
     public function __construct(

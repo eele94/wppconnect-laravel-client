@@ -3,41 +3,42 @@
 namespace Eele94\Wppconnect\Api\Resource;
 
 use Eele94\Wppconnect\Api\Requests\Auth\ChatWootWebHook;
-use Eele94\Wppconnect\Api\Requests\Auth\CheckConnectionSessionStatusDaConexao;
+use Eele94\Wppconnect\Api\Requests\Auth\CheckConnectionSession;
+use Eele94\Wppconnect\Api\Requests\Auth\ClearSessionData;
 use Eele94\Wppconnect\Api\Requests\Auth\CloseSession;
-use Eele94\Wppconnect\Api\Requests\Auth\GenerateTokenGeraTokenBearerParaSessao;
+use Eele94\Wppconnect\Api\Requests\Auth\GenerateToken;
 use Eele94\Wppconnect\Api\Requests\Auth\LogoutSession;
-use Eele94\Wppconnect\Api\Requests\Auth\QrcodeSessionPegarQrCodeDeAutenticacaoViaStream;
-use Eele94\Wppconnect\Api\Requests\Auth\StartSessionRetornaQrcodeDeLogin;
-use Eele94\Wppconnect\Api\Requests\Auth\StatusSessionAtualizaQrcodeDeLogin;
+use Eele94\Wppconnect\Api\Requests\Auth\QrcodeSession;
+use Eele94\Wppconnect\Api\Requests\Auth\StartSession;
+use Eele94\Wppconnect\Api\Requests\Auth\StatusSession;
 use Eele94\Wppconnect\Api\Resource;
 use Saloon\Http\Response;
 
 class Auth extends Resource
 {
-    public function generateTokenGeraTokenBearerParaSessao(string $session, string $secretkey): Response
+    public function generateToken(string $session, string $secretkey): Response
     {
-        return $this->connector->send(new GenerateTokenGeraTokenBearerParaSessao($session, $secretkey));
+        return $this->connector->send(new GenerateToken($session, $secretkey));
     }
 
-    public function startSessionRetornaQrcodeDeLogin(string $session, mixed $waitQrCode, mixed $webhook = null): Response
+    public function startSession(string $session, mixed $waitQrCode, mixed $webhook = null): Response
     {
-        return $this->connector->send(new StartSessionRetornaQrcodeDeLogin($session, $waitQrCode, $webhook));
+        return $this->connector->send(new StartSession($session, $waitQrCode, $webhook));
     }
 
-    public function statusSessionAtualizaQrcodeDeLogin(string $session): Response
+    public function statusSession(string $session): Response
     {
-        return $this->connector->send(new StatusSessionAtualizaQrcodeDeLogin($session));
+        return $this->connector->send(new StatusSession($session));
     }
 
-    public function qrcodeSessionPegarQrCodeDeAutenticacaoViaStream(string $session): Response
+    public function qrcodeSession(string $session): Response
     {
-        return $this->connector->send(new QrcodeSessionPegarQrCodeDeAutenticacaoViaStream($session));
+        return $this->connector->send(new QrcodeSession($session));
     }
 
-    public function checkConnectionSessionStatusDaConexao(string $session): Response
+    public function checkConnection(string $session): Response
     {
-        return $this->connector->send(new CheckConnectionSessionStatusDaConexao($session));
+        return $this->connector->send(new CheckConnectionSession($session));
     }
 
     public function closeSession(string $session): Response
@@ -48,6 +49,11 @@ class Auth extends Resource
     public function logoutSession(string $session): Response
     {
         return $this->connector->send(new LogoutSession($session));
+    }
+
+    public function clearSessionData(string $session, string $secretKey): Response
+    {
+        return $this->connector->send(new ClearSessionData($session, $secretKey));
     }
 
     public function chatWootWebHook(string $session): Response

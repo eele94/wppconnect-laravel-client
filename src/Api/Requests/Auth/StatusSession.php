@@ -6,15 +6,15 @@ use Saloon\Enums\Method;
 use Saloon\Http\Request;
 
 /**
- * check-connection-session (status da conexão)
+ * status-session (Atualiza QRCode de login)
  */
-class CheckConnectionSessionStatusDaConexao extends Request
+class StatusSession extends Request
 {
     protected Method $method = Method::GET;
 
     public function resolveEndpoint(): string
     {
-        return '/';
+        return "/{$this->session}/close-session";
     }
 
     public function __construct(

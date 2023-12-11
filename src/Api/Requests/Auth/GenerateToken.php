@@ -10,7 +10,7 @@ use Saloon\Traits\Body\HasJsonBody;
 /**
  * generate-token (Gera token Bearer para sessão)
  */
-class GenerateTokenGeraTokenBearerParaSessao extends SoloRequest implements HasBody
+class GenerateToken extends SoloRequest implements HasBody
 {
     use HasJsonBody;
 

@@ -10,7 +10,7 @@ use Saloon\Traits\Body\HasJsonBody;
 /**
  * close-session
  */
-class CloseSession extends Request implements HasBody
+class ClearSessionData extends Request implements HasBody
 {
     use HasJsonBody;
 
@@ -18,11 +18,12 @@ class CloseSession extends Request implements HasBody
 
     public function resolveEndpoint(): string
     {
-        return "/{$this->session}/close-session";
+        return "/{$this->session}/{$this->secret}/clear-session-data";
     }
 
     public function __construct(
         protected string $session,
+        protected string $secret,
     ) {
     }
 }

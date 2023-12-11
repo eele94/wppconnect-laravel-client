@@ -2,7 +2,7 @@
 
 namespace Eele94\Wppconnect;
 
-use Eele94\Wppconnect\Api\Requests\Auth\GenerateTokenGeraTokenBearerParaSessao;
+use Eele94\Wppconnect\Api\Requests\Auth\GenerateToken;
 use Eele94\Wppconnect\Models\WppconnectSession;
 use Saloon\Http\Auth\TokenAuthenticator;
 
@@ -17,7 +17,7 @@ class Wppconnect extends \Eele94\Wppconnect\Api\Wppconnect
         if (!$token) {
             $session = 'eele_11_12_2023';
 
-            $request = new GenerateTokenGeraTokenBearerParaSessao($session, config('wppconnect.secret_key'));
+            $request = new GenerateToken($session, config('wppconnect.secret_key'));
             $response = $request->send();
             $input = $response->json();
             WppconnectSession::updateOrCreate(
