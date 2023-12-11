@@ -27,42 +27,35 @@ class Wppconnect extends Connector
         return new Auth($this);
     }
 
-
     public function blockList(): BlockList
     {
         return new BlockList($this);
     }
-
 
     public function chat(): Chat
     {
         return new Chat($this);
     }
 
-
     public function contact(): Contact
     {
         return new Contact($this);
     }
-
 
     public function group(): Group
     {
         return new Group($this);
     }
 
-
     public function phoneStatus(): PhoneStatus
     {
         return new PhoneStatus($this);
     }
 
-
     public function profile(): Profile
     {
         return new Profile($this);
     }
-
 
     public function sendMessage(): SendMessage
     {
