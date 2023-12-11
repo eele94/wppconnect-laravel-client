@@ -15,77 +15,43 @@ use Saloon\Contracts\Response;
 
 class Auth extends Resource
 {
-	/**
-	 * @param string $session
-	 * @param string $secretkey
-	 */
-	public function generateTokenGeraTokenBearerParaSessao(string $session, string $secretkey): Response
-	{
-		return $this->connector->send(new GenerateTokenGeraTokenBearerParaSessao($session, $secretkey));
-	}
+    public function generateTokenGeraTokenBearerParaSessao(string $session, string $secretkey): Response
+    {
+        return $this->connector->send(new GenerateTokenGeraTokenBearerParaSessao($session, $secretkey));
+    }
 
+    public function startSessionRetornaQrcodeDeLogin(string $session, mixed $webhook, mixed $waitQrCode): Response
+    {
+        return $this->connector->send(new StartSessionRetornaQrcodeDeLogin($session, $webhook, $waitQrCode));
+    }
 
-	/**
-	 * @param string $session
-	 * @param mixed $webhook
-	 * @param mixed $waitQrCode
-	 */
-	public function startSessionRetornaQrcodeDeLogin(string $session, mixed $webhook, mixed $waitQrCode): Response
-	{
-		return $this->connector->send(new StartSessionRetornaQrcodeDeLogin($session, $webhook, $waitQrCode));
-	}
+    public function statusSessionAtualizaQrcodeDeLogin(string $session): Response
+    {
+        return $this->connector->send(new StatusSessionAtualizaQrcodeDeLogin($session));
+    }
 
+    public function qrcodeSessionPegarQrCodeDeAutenticacaoViaStream(string $session): Response
+    {
+        return $this->connector->send(new QrcodeSessionPegarQrCodeDeAutenticacaoViaStream($session));
+    }
 
-	/**
-	 * @param string $session
-	 */
-	public function statusSessionAtualizaQrcodeDeLogin(string $session): Response
-	{
-		return $this->connector->send(new StatusSessionAtualizaQrcodeDeLogin($session));
-	}
+    public function checkConnectionSessionStatusDaConexao(string $session): Response
+    {
+        return $this->connector->send(new CheckConnectionSessionStatusDaConexao($session));
+    }
 
+    public function closeSession(string $session): Response
+    {
+        return $this->connector->send(new CloseSession($session));
+    }
 
-	/**
-	 * @param string $session
-	 */
-	public function qrcodeSessionPegarQrCodeDeAutenticacaoViaStream(string $session): Response
-	{
-		return $this->connector->send(new QrcodeSessionPegarQrCodeDeAutenticacaoViaStream($session));
-	}
+    public function logoutSession(string $session): Response
+    {
+        return $this->connector->send(new LogoutSession($session));
+    }
 
-
-	/**
-	 * @param string $session
-	 */
-	public function checkConnectionSessionStatusDaConexao(string $session): Response
-	{
-		return $this->connector->send(new CheckConnectionSessionStatusDaConexao($session));
-	}
-
-
-	/**
-	 * @param string $session
-	 */
-	public function closeSession(string $session): Response
-	{
-		return $this->connector->send(new CloseSession($session));
-	}
-
-
-	/**
-	 * @param string $session
-	 */
-	public function logoutSession(string $session): Response
-	{
-		return $this->connector->send(new LogoutSession($session));
-	}
-
-
-	/**
-	 * @param string $session
-	 */
-	public function chatWootWebHook(string $session): Response
-	{
-		return $this->connector->send(new ChatWootWebHook($session));
-	}
+    public function chatWootWebHook(string $session): Response
+    {
+        return $this->connector->send(new ChatWootWebHook($session));
+    }
 }

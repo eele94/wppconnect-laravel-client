@@ -2,7 +2,6 @@
 
 namespace Eele94\Wppconnect\Api\Requests\Group;
 
-use DateTime;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -13,32 +12,24 @@ use Saloon\Traits\Body\HasJsonBody;
  */
 class SetGroupDescription extends Request implements HasBody
 {
-	use HasJsonBody;
+    use HasJsonBody;
 
-	protected Method $method = Method::POST;
+    protected Method $method = Method::POST;
 
+    public function resolveEndpoint(): string
+    {
+        return '/';
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/";
-	}
+    public function __construct(
+        protected string $session,
+        protected mixed $groupId = null,
+        protected mixed $description = null,
+    ) {
+    }
 
-
-	/**
-	 * @param string $session
-	 * @param null|mixed $groupId
-	 * @param null|mixed $description
-	 */
-	public function __construct(
-		protected string $session,
-		protected mixed $groupId = null,
-		protected mixed $description = null,
-	) {
-	}
-
-
-	public function defaultBody(): array
-	{
-		return array_filter(['groupId' => $this->groupId, 'description' => $this->description]);
-	}
+    public function defaultBody(): array
+    {
+        return array_filter(['groupId' => $this->groupId, 'description' => $this->description]);
+    }
 }

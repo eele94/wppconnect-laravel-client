@@ -2,7 +2,6 @@
 
 namespace Eele94\Wppconnect\Api\Requests\SendMessage;
 
-use DateTime;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -13,36 +12,26 @@ use Saloon\Traits\Body\HasJsonBody;
  */
 class SendReply extends Request implements HasBody
 {
-	use HasJsonBody;
+    use HasJsonBody;
 
-	protected Method $method = Method::POST;
+    protected Method $method = Method::POST;
 
+    public function resolveEndpoint(): string
+    {
+        return '/';
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/";
-	}
+    public function __construct(
+        protected string $session,
+        protected mixed $phone = null,
+        protected mixed $message = null,
+        protected mixed $messageId = null,
+        protected mixed $isGroup = null,
+    ) {
+    }
 
-
-	/**
-	 * @param string $session
-	 * @param null|mixed $phone
-	 * @param null|mixed $message
-	 * @param null|mixed $messageId
-	 * @param null|mixed $isGroup
-	 */
-	public function __construct(
-		protected string $session,
-		protected mixed $phone = null,
-		protected mixed $message = null,
-		protected mixed $messageId = null,
-		protected mixed $isGroup = null,
-	) {
-	}
-
-
-	public function defaultBody(): array
-	{
-		return array_filter(['phone' => $this->phone, 'message' => $this->message, 'messageId' => $this->messageId, 'isGroup' => $this->isGroup]);
-	}
+    public function defaultBody(): array
+    {
+        return array_filter(['phone' => $this->phone, 'message' => $this->message, 'messageId' => $this->messageId, 'isGroup' => $this->isGroup]);
+    }
 }

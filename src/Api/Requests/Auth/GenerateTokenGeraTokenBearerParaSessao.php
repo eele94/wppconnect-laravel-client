@@ -2,7 +2,6 @@
 
 namespace Eele94\Wppconnect\Api\Requests\Auth;
 
-use DateTime;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -13,24 +12,18 @@ use Saloon\Traits\Body\HasJsonBody;
  */
 class GenerateTokenGeraTokenBearerParaSessao extends Request implements HasBody
 {
-	use HasJsonBody;
+    use HasJsonBody;
 
-	protected Method $method = Method::POST;
+    protected Method $method = Method::POST;
 
+    public function resolveEndpoint(): string
+    {
+        return '/';
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/";
-	}
-
-
-	/**
-	 * @param string $session
-	 * @param string $secretkey
-	 */
-	public function __construct(
-		protected string $session,
-		protected string $secretkey,
-	) {
-	}
+    public function __construct(
+        protected string $session,
+        protected string $secretkey,
+    ) {
+    }
 }

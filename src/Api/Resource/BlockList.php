@@ -10,31 +10,18 @@ use Saloon\Contracts\Response;
 
 class BlockList extends Resource
 {
-	/**
-	 * @param string $session
-	 * @param mixed $phone
-	 */
-	public function blockContact(string $session, mixed $phone): Response
-	{
-		return $this->connector->send(new BlockContact($session, $phone));
-	}
+    public function blockContact(string $session, mixed $phone): Response
+    {
+        return $this->connector->send(new BlockContact($session, $phone));
+    }
 
+    public function unBlockContact(string $session, mixed $phone): Response
+    {
+        return $this->connector->send(new UnBlockContact($session, $phone));
+    }
 
-	/**
-	 * @param string $session
-	 * @param mixed $phone
-	 */
-	public function unBlockContact(string $session, mixed $phone): Response
-	{
-		return $this->connector->send(new UnBlockContact($session, $phone));
-	}
-
-
-	/**
-	 * @param string $session
-	 */
-	public function blockList(string $session): Response
-	{
-		return $this->connector->send(new BlockListRequest($session));
-	}
+    public function blockList(string $session): Response
+    {
+        return $this->connector->send(new BlockListRequest($session));
+    }
 }

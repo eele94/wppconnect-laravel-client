@@ -2,7 +2,6 @@
 
 namespace Eele94\Wppconnect\Api\Requests\Auth;
 
-use DateTime;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
@@ -13,32 +12,24 @@ use Saloon\Traits\Body\HasJsonBody;
  */
 class StartSessionRetornaQrcodeDeLogin extends Request implements HasBody
 {
-	use HasJsonBody;
+    use HasJsonBody;
 
-	protected Method $method = Method::POST;
+    protected Method $method = Method::POST;
 
+    public function resolveEndpoint(): string
+    {
+        return '/';
+    }
 
-	public function resolveEndpoint(): string
-	{
-		return "/";
-	}
+    public function __construct(
+        protected string $session,
+        protected mixed $webhook = null,
+        protected mixed $waitQrCode = null,
+    ) {
+    }
 
-
-	/**
-	 * @param string $session
-	 * @param null|mixed $webhook
-	 * @param null|mixed $waitQrCode
-	 */
-	public function __construct(
-		protected string $session,
-		protected mixed $webhook = null,
-		protected mixed $waitQrCode = null,
-	) {
-	}
-
-
-	public function defaultBody(): array
-	{
-		return array_filter(['webhook' => $this->webhook, 'waitQrCode' => $this->waitQrCode]);
-	}
+    public function defaultBody(): array
+    {
+        return array_filter(['webhook' => $this->webhook, 'waitQrCode' => $this->waitQrCode]);
+    }
 }
