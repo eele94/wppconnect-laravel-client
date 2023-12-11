@@ -4,13 +4,13 @@ namespace Eele94\Wppconnect\Api\Requests\Auth;
 
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
-use Saloon\Http\Request;
+use Saloon\Http\SoloRequest;
 use Saloon\Traits\Body\HasJsonBody;
 
 /**
  * generate-token (Gera token Bearer para sessão)
  */
-class GenerateTokenGeraTokenBearerParaSessao extends Request implements HasBody
+class GenerateTokenGeraTokenBearerParaSessao extends SoloRequest implements HasBody
 {
     use HasJsonBody;
 
@@ -18,7 +18,7 @@ class GenerateTokenGeraTokenBearerParaSessao extends Request implements HasBody
 
     public function resolveEndpoint(): string
     {
-        return '/';
+        return config('wppconnect.base_uri') . "/{$this->session}/{$this->secretkey}/generate-token";
     }
 
     public function __construct(

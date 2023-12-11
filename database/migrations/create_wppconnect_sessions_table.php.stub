@@ -12,8 +12,10 @@ return new class() extends Migration
             $table->id();
             $table->string('token')->nullable();
             $table->string('session')->nullable();
+            $table->string('version')->nullable();
             $table->boolean('init')->nullable();
             $table->text('qr_code')->nullable();
+            $table->text('url_code')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
         });

@@ -11,7 +11,7 @@ use Eele94\Wppconnect\Api\Requests\Auth\QrcodeSessionPegarQrCodeDeAutenticacaoVi
 use Eele94\Wppconnect\Api\Requests\Auth\StartSessionRetornaQrcodeDeLogin;
 use Eele94\Wppconnect\Api\Requests\Auth\StatusSessionAtualizaQrcodeDeLogin;
 use Eele94\Wppconnect\Api\Resource;
-use Saloon\Contracts\Response;
+use Saloon\Http\Response;
 
 class Auth extends Resource
 {
@@ -20,9 +20,9 @@ class Auth extends Resource
         return $this->connector->send(new GenerateTokenGeraTokenBearerParaSessao($session, $secretkey));
     }
 
-    public function startSessionRetornaQrcodeDeLogin(string $session, mixed $webhook, mixed $waitQrCode): Response
+    public function startSessionRetornaQrcodeDeLogin(string $session, mixed $waitQrCode, mixed $webhook = null): Response
     {
-        return $this->connector->send(new StartSessionRetornaQrcodeDeLogin($session, $webhook, $waitQrCode));
+        return $this->connector->send(new StartSessionRetornaQrcodeDeLogin($session, $waitQrCode, $webhook));
     }
 
     public function statusSessionAtualizaQrcodeDeLogin(string $session): Response

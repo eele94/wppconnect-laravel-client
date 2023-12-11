@@ -18,14 +18,17 @@ class StartSessionRetornaQrcodeDeLogin extends Request implements HasBody
 
     public function resolveEndpoint(): string
     {
-        return '/';
+        return "/{$this->session}/start-session";
     }
 
     public function __construct(
         protected string $session,
-        protected mixed $webhook = null,
         protected mixed $waitQrCode = null,
+        protected mixed $webhook = null,
     ) {
+        if (!$this->webhook) {
+            $this->webhook = route('wppconnect.webhook.store', ['secret' => config('wppconnect.secret_key')]);
+        }
     }
 
     public function defaultBody(): array

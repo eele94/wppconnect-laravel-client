@@ -19,7 +19,11 @@ class WppconnectServiceProvider extends PackageServiceProvider
             ->name('wppconnect-client')
             ->hasConfigFile('wppconnect')
             ->hasViews()
-            ->hasMigration('create_wppconnect_sessions_table')
+            ->hasRoute('web')
+            ->hasMigrations([
+                'create_wppconnect_sessions_table',
+                'create_wppconnect_webhooks_table',
+            ])
             ->hasCommand(WppconnectCommand::class);
     }
 }

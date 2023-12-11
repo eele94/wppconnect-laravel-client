@@ -22,7 +22,6 @@ class Wppconnect extends Connector
         return 'http://localhost:21465/api';
     }
 
-
     public function auth(): Auth
     {
         return new Auth($this);
