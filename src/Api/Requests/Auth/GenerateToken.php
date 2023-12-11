@@ -18,7 +18,7 @@ class GenerateToken extends SoloRequest implements HasBody
 
     public function resolveEndpoint(): string
     {
-        return config('wppconnect.base_uri') . "/{$this->session}/{$this->secretkey}/generate-token";
+        return config('wppconnect.base_uri')."/{$this->session}/{$this->secretkey}/generate-token";
     }
 
     public function __construct(

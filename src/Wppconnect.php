@@ -14,7 +14,7 @@ class Wppconnect extends \Eele94\Wppconnect\Api\Wppconnect
     public function __construct()
     {
         $token = WppconnectSession::first()?->token;
-        if (!$token) {
+        if (! $token) {
             $session = 'eele_11_12_2023';
 
             $request = new GenerateToken($session, config('wppconnect.secret_key'));

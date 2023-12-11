@@ -26,7 +26,7 @@ class StartSession extends Request implements HasBody
         protected mixed $waitQrCode = null,
         protected mixed $webhook = null,
     ) {
-        if (!$this->webhook) {
+        if (! $this->webhook) {
             $this->webhook = route('wppconnect.webhook.store', ['secret' => config('wppconnect.secret_key')]);
         }
     }
