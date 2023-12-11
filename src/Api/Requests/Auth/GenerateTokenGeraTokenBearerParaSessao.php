@@ -18,7 +18,7 @@ class GenerateTokenGeraTokenBearerParaSessao extends SoloRequest implements HasB
 
     public function resolveEndpoint(): string
     {
-        return config('wppconnect.base_uri') . "/{$this->session}/{$this->secretkey}/generate-token";
+        return config('wppconnect.base_uri')."/{$this->session}/{$this->secretkey}/generate-token";
     }
 
     public function __construct(

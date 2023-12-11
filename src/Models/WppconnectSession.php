@@ -10,6 +10,6 @@ class WppconnectSession extends Model
 
     public function getFullAttribute()
     {
-        return $this->session . ':' . $this->token;
+        return $this->session.':'.$this->token;
     }
 }
