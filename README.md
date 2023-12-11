@@ -26,14 +26,14 @@ composer require eele/wppconnect-laravel-client
 You can publish and run the migrations with:
 
 ```bash
-php artisan vendor:publish --tag="wppconnect-laravel-client-migrations"
+php artisan vendor:publish --tag="wppconnect-client-migrations"
 php artisan migrate
 ```
 
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="wppconnect-laravel-client-config"
+php artisan vendor:publish --tag="wppconnect-client-config"
 ```
 
 This is the contents of the published config file:
@@ -46,7 +46,7 @@ return [
 Optionally, you can publish the views using
 
 ```bash
-php artisan vendor:publish --tag="wppconnect-laravel-client-views"
+php artisan vendor:publish --tag="wppconnect-client-views"
 ```
 
 ## Usage

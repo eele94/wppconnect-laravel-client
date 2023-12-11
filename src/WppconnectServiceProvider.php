@@ -16,10 +16,10 @@ class WppconnectServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('wppconnect-laravel-client')
-            ->hasConfigFile()
+            ->name('wppconnect-client')
+            ->hasConfigFile('wppconnect')
             ->hasViews()
-            ->hasMigration('create_wppconnect-laravel-client_table')
+            ->hasMigration('create_wppconnect_sessions_table')
             ->hasCommand(WppconnectCommand::class);
     }
 }

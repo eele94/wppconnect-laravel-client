@@ -13,7 +13,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Eele94\\Wppconnect\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'Eele94\\Wppconnect\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
     }
 
@@ -27,10 +27,15 @@ class TestCase extends Orchestra
     public function getEnvironmentSetUp($app)
     {
         config()->set('database.default', 'testing');
+        config()->set('database.connections.testing', [
+            'driver' => 'sqlite',
+            'database' => ':memory:',
+        ]);
 
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_wppconnect-laravel-client_table.php.stub';
-        $migration->up();
-        */
+        $files = glob(__DIR__ . '/../database/migrations/*.php.stub');
+        foreach ($files as $file) {
+            $migration = include $file;
+            $migration->up();
+        }
     }
 }

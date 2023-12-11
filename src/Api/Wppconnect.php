@@ -17,56 +17,56 @@ use Saloon\Http\Connector;
  */
 class Wppconnect extends Connector
 {
-	public function resolveBaseUrl(): string
-	{
-		return 'http://localhost:21465/api';
-	}
+    public function resolveBaseUrl(): string
+    {
+        return 'http://localhost:21465/api';
+    }
 
 
-	public function auth(): Auth
-	{
-		return new Auth($this);
-	}
+    public function auth(): Auth
+    {
+        return new Auth($this);
+    }
 
 
-	public function blockList(): BlockList
-	{
-		return new BlockList($this);
-	}
+    public function blockList(): BlockList
+    {
+        return new BlockList($this);
+    }
 
 
-	public function chat(): Chat
-	{
-		return new Chat($this);
-	}
+    public function chat(): Chat
+    {
+        return new Chat($this);
+    }
 
 
-	public function contact(): Contact
-	{
-		return new Contact($this);
-	}
+    public function contact(): Contact
+    {
+        return new Contact($this);
+    }
 
 
-	public function group(): Group
-	{
-		return new Group($this);
-	}
+    public function group(): Group
+    {
+        return new Group($this);
+    }
 
 
-	public function phoneStatus(): PhoneStatus
-	{
-		return new PhoneStatus($this);
-	}
+    public function phoneStatus(): PhoneStatus
+    {
+        return new PhoneStatus($this);
+    }
 
 
-	public function profile(): Profile
-	{
-		return new Profile($this);
-	}
+    public function profile(): Profile
+    {
+        return new Profile($this);
+    }
 
 
-	public function sendMessage(): SendMessage
-	{
-		return new SendMessage($this);
-	}
+    public function sendMessage(): SendMessage
+    {
+        return new SendMessage($this);
+    }
 }
