@@ -23,14 +23,15 @@ class WppconnectSession extends Model
     public function isLoggedIn()
     {
         $connectedStatusses = ['inChat'];
+
         return in_array($this->status, $connectedStatusses);
     }
 
     public function setQrCodeAttribute($value)
     {
-        $prefix = "data:image/png;base64,";
-        if ($value && !Str::startsWith($value, $prefix)) {
-            $value = $prefix . $value;
+        $prefix = 'data:image/png;base64,';
+        if ($value && ! Str::startsWith($value, $prefix)) {
+            $value = $prefix.$value;
         }
         $this->attributes['qr_code'] = $value;
     }
@@ -55,6 +56,7 @@ class WppconnectSession extends Model
         } else {
             $session = self::create($input);
         }
+
         return $session;
     }
 }
