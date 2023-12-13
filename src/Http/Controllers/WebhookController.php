@@ -35,6 +35,7 @@ class WebhookController
             // logger()->error($th->getMessage(), ['from' => 'WppWebhookController::store', 'payload' => $payload]);
             throw ($th);
         }
+
         return response('ok');
     }
 
@@ -73,7 +74,7 @@ class WebhookController
     public function statusfind(WppConnectWebhook $webhook)
     {
         $session = $webhook->wppSession;
-        if (!$session) {
+        if (! $session) {
             return;
         }
         $status = $webhook->data['status'];
