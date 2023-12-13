@@ -12,7 +12,7 @@ class WppconnectSession extends Model
 
     public function getFullAttribute()
     {
-        return $this->session . ':' . $this->token;
+        return $this->session.':'.$this->token;
     }
 
     public static function mySession()
@@ -30,8 +30,8 @@ class WppconnectSession extends Model
     public function setQrCodeAttribute($value)
     {
         $prefix = 'data:image/png;base64,';
-        if ($value && !Str::startsWith($value, $prefix)) {
-            $value = $prefix . $value;
+        if ($value && ! Str::startsWith($value, $prefix)) {
+            $value = $prefix.$value;
         }
         $this->attributes['qr_code'] = $value;
     }
