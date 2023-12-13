@@ -18,7 +18,7 @@ class SendMessage extends Request implements HasBody
 
     public function resolveEndpoint(): string
     {
-        return '/';
+        return "/{$this->session}/send-message";
     }
 
     public function __construct(

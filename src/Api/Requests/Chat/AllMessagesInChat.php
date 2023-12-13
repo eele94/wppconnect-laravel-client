@@ -14,7 +14,7 @@ class AllMessagesInChat extends Request
 
     public function resolveEndpoint(): string
     {
-        return '/';
+        return "/{$this->session}/all-messages-in-chat/{$this->phone}";
     }
 
     public function __construct(

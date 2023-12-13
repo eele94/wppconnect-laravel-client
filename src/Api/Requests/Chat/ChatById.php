@@ -14,7 +14,7 @@ class ChatById extends Request
 
     public function resolveEndpoint(): string
     {
-        return '/';
+        return "/{$this->session}/chat-by-id/{$this->phone}";
     }
 
     public function __construct(

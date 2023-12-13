@@ -27,7 +27,7 @@ use Eele94\Wppconnect\Api\Requests\Chat\SubscribePresenceCopy;
 use Eele94\Wppconnect\Api\Requests\Chat\TemporaryMessages;
 use Eele94\Wppconnect\Api\Requests\Chat\UnreadMessages;
 use Eele94\Wppconnect\Api\Resource;
-use Saloon\Contracts\Response;
+use Saloon\Http\Response;
 
 class Chat extends Resource
 {

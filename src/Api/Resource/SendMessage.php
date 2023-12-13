@@ -16,7 +16,7 @@ use Eele94\Wppconnect\Api\Requests\SendMessage\SendReply;
 use Eele94\Wppconnect\Api\Requests\SendMessage\SendTextStorie;
 use Eele94\Wppconnect\Api\Requests\SendMessage\SendVideoStorie;
 use Eele94\Wppconnect\Api\Resource;
-use Saloon\Contracts\Response;
+use Saloon\Http\Response;
 
 class SendMessage extends Resource
 {

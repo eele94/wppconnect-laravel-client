@@ -2,6 +2,9 @@
 
 namespace Eele94\Wppconnect\Http\Controllers;
 
+use Eele94\Wppconnect\Events\OnAck;
+use Eele94\Wppconnect\Events\OnMessage;
+use Eele94\Wppconnect\Events\OnPresenceChanged;
 use Eele94\Wppconnect\Facades\Wppconnect;
 use Eele94\Wppconnect\Models\WppconnectWebhook;
 use Illuminate\Http\Request;
@@ -29,7 +32,8 @@ class WebhookController
                 $this->handleDefault($webhook);
             }
         } catch (\Throwable $th) {
-            logger()->error($th->getMessage(), ['from' => 'WppWebhookController::handle', 'payload' => $payload]);
+            // logger()->error($th->getMessage(), ['from' => 'WppWebhookController::store', 'payload' => $payload]);
+            throw ($th);
         }
         return response('ok');
     }
@@ -49,6 +53,21 @@ class WebhookController
         //     'qr_code' => $webhook->data['qrcode'],
         //     'url_code' => $webhook->data['urlcode'],
         // ]);
+    }
+
+    public function onmessage(WppconnectWebhook $webhook)
+    {
+        OnMessage::dispatch($webhook);
+    }
+
+    public function onpresencechanged(WppconnectWebhook $webhook)
+    {
+        OnPresenceChanged::dispatch($webhook);
+    }
+
+    public function onack(WppconnectWebhook $webhook)
+    {
+        OnAck::dispatch($webhook);
     }
 
     public function statusfind(WppConnectWebhook $webhook)
@@ -73,12 +92,15 @@ class WebhookController
 
         $failed = ['qrReadError', 'browserClose'];
         if (in_array($status, $failed)) {
-            // $session->delete();
+            $session->delete();
         }
     }
 
     public function qrReadSuccess(WppconnectWebhook $webhook)
     {
+        $webhook->wppSession->update([
+            'qr_code' => null,
+        ]);
     }
 
     public function inChat(WppconnectWebhook $webhook)
